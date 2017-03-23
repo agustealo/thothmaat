@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="post">
+        {% if leaf.published_date %}
+            <div class="date">
+                {{ leaf.published_date }}
+            </div>
+        {% endif %}
+        <h1>{{ leaf.title }}</h1>
+        <p>{{ leaf.text|linebreaksbr }}</p>
+    </div>
+{% endblock %}

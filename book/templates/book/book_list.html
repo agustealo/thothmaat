@@ -1,11 +1,13 @@
-<div>
-    <h1><a href="/">Django Girls Blog</a></h1>
-</div>
+{% extends 'blog/base.html' %}
 
-{% for leaf in leafs %}
-    <div>
-        <p>published: {{ leaf.published_date }}</p>
-        <h1><a href="">{{ leaf.title }}</a></h1>
-        <p>{{ post.text|linebreaksbr }}</p>
-    </div>
-{% endfor %}
+{% block content %}
+    {% for leaf in leafs %}
+        <div class="post">
+            <div class="date">
+                {{ leaf.published_date }}
+            </div>
+            <h1><a href="{% url 'post_detail' pk=leaf.pk %}">{{ leaf.title }}</a></h1>
+            <p>{{ leaf.text|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
